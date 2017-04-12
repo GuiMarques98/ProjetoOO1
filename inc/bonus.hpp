@@ -12,11 +12,11 @@ public:
   //Metodos padroes da classe Bonus
   Bonus();
   Bonus(int x, int y, int score);
-  Bonus(int x, int, y, int score, char body);
+  Bonus(int x, int y, int score, char body);
   ~Bonus();
 
   int getScore();
   void setScore(int score);
-}
+};
 
 #endif

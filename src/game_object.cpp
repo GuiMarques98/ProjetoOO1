@@ -9,7 +9,7 @@ Game_Object::Game_Object()
   setBody(0);
 }
 
-virtual Game_Object::~Game_Object(){}
+Game_Object::~Game_Object(){}
 
 int Game_Object::getPosX()
 {

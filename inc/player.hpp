@@ -25,6 +25,6 @@ public:
   int getScore();
   void setScore(int score);
 
-}
+};
 
 #endif

@@ -17,6 +17,6 @@ public:
 
   int getDamage();
   void setDamage(int damage);
-}
+};
 
 #endif

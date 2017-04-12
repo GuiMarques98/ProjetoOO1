@@ -26,6 +26,8 @@ Bonus::Bonus(int x, int y, int score, char body)
   setScore(score);
 }
 
+Bonus::~Bonus(){}
+
 int Bonus::getScore()
 {
   return score;

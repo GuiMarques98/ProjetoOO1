@@ -2,7 +2,7 @@
 #define GAME_OBJECT_HPP
 
 #include <string>
-using namespace sdt;
+using namespace std;
 
 class Game_Object
 {
@@ -14,7 +14,7 @@ private:
 public:
   //Métodos padroes da classe abstrata
   Game_Object();
-  virtual ~Game_Object() = 0;
+  virtual ~Game_Object();
 
   int getPosX();
   void setPosX(int x);
@@ -25,7 +25,7 @@ public:
   char getBody();
   void setBody(char body);
 
-}
+};
 
 
 #endif
