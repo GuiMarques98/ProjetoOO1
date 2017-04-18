@@ -7,9 +7,16 @@
 #include "../inc/draw.hpp"
 
 #include <ncurses.h>
+#include <vector>
+#include <string>
+#include <iostream>
+#include <fstream>
 
 
 int main()
 {
+	initscr();
+	
+	endwin();
 	return 0;
 }

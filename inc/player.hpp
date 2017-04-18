@@ -7,8 +7,7 @@ class Player : public Game_Object
 {
 private:
   bool alive;
-  bool winner;
-  int score;
+  char direction;
 
 public:
   //Metodos padroes da Classe player
@@ -19,11 +18,8 @@ public:
   bool getAlive();
   void setAlive(bool alive);
 
-  bool getWinner();
-  void setWinner(bool winner);
-
-  int getScore();
-  void setScore(int score);
+  char getDirection();
+  void setDirection(char direction);
 
 };
 

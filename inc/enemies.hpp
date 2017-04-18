@@ -7,6 +7,8 @@ class Enemies : public Game_Object
 {
 private:
   int damage;
+  char direction;
+
 
 public:
   //Metodos padroes da Classe Enemies
@@ -17,6 +19,9 @@ public:
 
   int getDamage();
   void setDamage(int damage);
+
+  char getDirection();
+  void setDirection(char direction);
 };
 
 #endif

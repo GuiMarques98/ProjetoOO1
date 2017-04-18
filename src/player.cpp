@@ -8,8 +8,7 @@ Player::Player()
   setPosY(0);
   setBody('@');
   setAlive(true);
-  setWinner(false);
-  setScore(0);
+  setDirection(0);
 }
 
 Player::Player(int x, int y)
@@ -18,8 +17,8 @@ Player::Player(int x, int y)
   setPosY(y);
   setBody('@');
   setAlive(true);
-  setWinner(false);
-  setScore(0);
+  setDirection(0);
+
 }
 
 Player::~Player(){}
@@ -34,22 +33,12 @@ void Player::setAlive(bool alive)
   this->alive = alive;
 }
 
-bool Player::getWinner()
+char Player::getDirection()
 {
-  return winner;
+  return direction;
 }
 
-void Player::setWinner(bool winner)
+void Player::setDirection(char direction)
 {
-  this->winner = winner;
-}
-
-int Player::getScore()
-{
-  return score;
-}
-
-void Player::setScore(int score)
-{
-  this->score = score;
+  this->direction = direction;
 }

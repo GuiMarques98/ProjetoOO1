@@ -37,3 +37,13 @@ void Enemies::setDamage(int damage)
 {
   this->damage = damage;
 }
+
+char Enemies::getDirection()
+{
+  return direction;
+}
+
+void Enemies::setDirection(char direction)
+{
+  this->direction = direction
+}

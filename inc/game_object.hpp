@@ -7,9 +7,8 @@ using namespace std;
 class Game_Object
 {
 private:
-  int posX;
-  int posY;
-  char body;
+  int posX, posY; //Coordenadas
+  char body; //Corpo do objeto
 
 public:
   //Métodos padroes da classe abstrata

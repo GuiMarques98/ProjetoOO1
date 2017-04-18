@@ -1,7 +1,6 @@
 #include "../inc/game_object.hpp"
 
 //Metodos padroes Classe abstrata Game_Object
-
 Game_Object::Game_Object()
 {
   setPosX(0);
@@ -18,7 +17,7 @@ int Game_Object::getPosX()
 
 void Game_Object::setPosX(int x)
 {
-  posX = x;
+   posX= x;
 }
 
 int Game_Object::getPosY()
