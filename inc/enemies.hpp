@@ -1,27 +1,36 @@
 #ifndef ENEMIES_HPP
 #define ENEMIES_HPP
 
+#include <ctime>
+#include <cstdlib>
+#include "colisor.hpp"
+#include "player.hpp"
+
 #include "game_object.hpp"
 
 class Enemies : public Game_Object
 {
 private:
-  int damage;
-  char direction;
-
+  int radius;
+  int initPosX, initPosY;
 
 public:
   //Metodos padroes da Classe Enemies
   Enemies();
-  Enemies(int x, int y, int damage);
-  Enemies(int x, int y, char body, int damage);
+  Enemies(int x, int y, int radius);
+  Enemies(int x, int y, char body, int radius);
   ~Enemies();
 
-  int getDamage();
-  void setDamage(int damage);
+  int getRadius();
+  void setRadius(int Radius);
+  int getInitPosX();
+  void setInitPosX(int x);
+  int getInitPosY();
+  void setInitPosY(int y);
 
-  char getDirection();
-  void setDirection(char direction);
+
+  void act(Player player, Colisor mapColisor);
+
 };
 
 #endif

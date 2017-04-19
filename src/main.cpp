@@ -15,8 +15,23 @@
 
 int main()
 {
+	Map map("./doc/map.txt");
+	Draw draw(map, 10000);
+	Player player(19,18);
+	Colisor colisor(map.getAllMap());
+
 	initscr();
-	
+	noecho();
+	//nodelay(stdscr, true);//getch nao espera o usuário pressionar a tecla
+	curs_set(0);
+	draw.printScr();
+	draw.printScr(&player);
+	while (player.getAlive())
+	{
+		player.act(colisor);
+		draw.printScr(&player);
+	}
+	getch();
 	endwin();
 	return 0;
 }

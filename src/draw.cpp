@@ -4,9 +4,16 @@
 
 Draw::Draw(){}
 
-Draw::Draw(Map gameMap)
+Draw::Draw(Map gameMap, int delay)
 {
-  picture = gameMap.getAllMap();
+  try
+  {
+    picture = gameMap.getAllMap();
+  }catch (char const* msg)
+  {
+    std::cout << msg << '\n';
+  }
+  this->delay = delay;
 }
 
 Draw::~Draw(){}
@@ -21,6 +28,16 @@ std::vector<std::string> Draw::getPicture()
   return picture;
 }
 
+void Draw::setDelay(int delay)
+{
+  this->delay = delay;
+}
+
+int Draw::getDelay()
+{
+  return delay;
+}
+
 //Limpa o vetor da pintura
 void Draw::clean()
 {
@@ -30,7 +47,7 @@ void Draw::clean()
 //Desenha na tela o que esta no vector picture
 void Draw::printScr()
 {
-  for(int i=0;i>picture.size();++i)
+  for(size_t i=0;i<picture.size();++i)
   {
     printw("%s", picture[i].c_str());
     refresh();
@@ -51,6 +68,12 @@ void Draw::printScr(char body, int posX, int posY)
 void Draw::printScr(Game_Object* gameObject)
 {
   move(gameObject->getPosY(), gameObject->getPosX());
-  printw("%c", gameObject->getBody());
+  addch(gameObject->getBody());
   refresh();
+}
+
+//Aplica delay a tela
+void Draw::putDelay()
+{
+
 }

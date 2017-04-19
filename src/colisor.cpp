@@ -50,7 +50,7 @@ bool Colisor::isColision(Game_Object* gameObject, char direction)
     //Entrada: Ponteiro que aponta para a classe Game_Object
     case 'u': //up pra cima
       if(gameObject->getPosY()-1 <= 0)
-        return 0;
+        return true;
       else
         if(map[gameObject->getPosY()-1][gameObject->getPosX()] != ' ')
           return true;
@@ -70,4 +70,14 @@ bool Colisor::isColision(Game_Object* gameObject, char direction)
     default:
       return false;
   }
+}
+
+//Verifica a colisao player e inimigo
+//Entrada: Dois ponteiros da classe Game_Object
+//Saida: Se ha ou nao colisao
+bool isPColision(Game_Object* player, Game_Object* enemie)
+{
+  if(player->getPosY() == enemie->getPosY() and player->getPosX() == enemie->getPosX())
+    return true;
+  return false;
 }
