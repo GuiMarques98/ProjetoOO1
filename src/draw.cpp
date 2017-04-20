@@ -71,9 +71,9 @@ void Draw::printScr(Game_Object* gameObject)
   addch(gameObject->getBody());
   refresh();
 }
-
 //Aplica delay a tela
 void Draw::putDelay()
 {
-
+  unsigned int retTime = time(0) + delay/20;
+  while (time(0) < retTime);
 }

@@ -57,6 +57,7 @@ void Player::setDirection(char direction)
     default:
       this->direction = 0;
   }
+
 }
 
 //Atualiza as cordenadas de acordo com a direcao

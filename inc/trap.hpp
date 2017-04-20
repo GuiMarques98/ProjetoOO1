@@ -8,7 +8,7 @@
 
 #include "game_object.hpp"
 
-class Enemies : public Game_Object
+class Trap : public Game_Object
 {
 private:
   int radius;
@@ -16,10 +16,10 @@ private:
 
 public:
   //Metodos padroes da Classe Enemies
-  Enemies();
-  Enemies(int x, int y, int radius);
-  Enemies(int x, int y, char body, int radius);
-  ~Enemies();
+  Trap();
+  Trap(int x, int y, int radius);
+  Trap(int x, int y, char body, int radius);
+  ~Trap();
 
   int getRadius();
   void setRadius(int Radius);
@@ -29,7 +29,7 @@ public:
   void setInitPosY(int y);
 
 
-  void act(Player player, Colisor mapColisor);
+
 
 };
 

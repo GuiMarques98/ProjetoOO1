@@ -5,8 +5,10 @@
 #include <fstream>
 #include <ncurses.h>
 #include <vector>
+#include <cstdlib>
+#include <ctime>
 #include "player.hpp"
-#include "enemies.hpp"
+#include "trap.hpp"
 #include "bonus.hpp"
 #include "map.hpp"
 
