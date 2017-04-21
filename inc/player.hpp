@@ -12,7 +12,7 @@
 class Player : public Game_Object
 {
 private:
-  bool alive;
+  bool alive, win;
   int score;
   char direction;
 
@@ -30,6 +30,8 @@ public:
   void setDirection(char direction);
   int getScore();
   void setScore(int score);
+  bool getWin();
+  void setWin(bool win);
 
   void act(Colisor mapColisor);
 

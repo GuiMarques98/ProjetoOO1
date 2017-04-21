@@ -1,5 +1,5 @@
-#ifndef ENEMIES_HPP
-#define ENEMIES_HPP
+#ifndef TRAP_HPP
+#define TRAP_HPP
 
 #include <ctime>
 #include <cstdlib>

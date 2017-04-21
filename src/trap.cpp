@@ -21,6 +21,7 @@ Trap::~Trap(){}
 //Parametro: Posicoes X e Y
 void Trap::setXY(int x, int y)
 {
+  //oi
   this->setPosX(x);
   this->setPosY(y);
 }

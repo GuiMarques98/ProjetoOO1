@@ -37,3 +37,9 @@ void Bonus::setScore(int score)
 {
   this->score = score;
 }
+
+void Bonus::setXY(int x, int y)
+{
+  this->setPosX(x);
+  this->setPosY(y);
+}

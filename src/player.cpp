@@ -9,6 +9,8 @@ Player::Player()
   setBody('@');
   setAlive(true);
   setDirection(0);
+  setWin(false);
+  score = 0;
 }
 
 Player::Player(int x, int y)
@@ -18,7 +20,8 @@ Player::Player(int x, int y)
   setBody('@');
   setAlive(true);
   setDirection(0);
-
+  setWin(false);
+  score = 0;
 }
 
 Player::~Player(){}
@@ -67,7 +70,17 @@ int Player::getScore()
 
 void Player::setScore(int score)
 {
-  this->score = score;
+  this->score += score;
+}
+
+bool Player::getWin()
+{
+  return win;
+}
+
+void Player::setWin(bool win)
+{
+  this->win = win;
 }
 
 //Atualiza as cordenadas de acordo com a direcao
@@ -93,10 +106,10 @@ void Player::updateDirection()
 }
 
 //Move o player
-//Entrada: Classe colisor
+//Parametro: Classe colisor
 void Player::act(Colisor mapColisor)
 {
-  char a = getch();
+  char a = tolower(getch());
   if(a == -1)
     return;
   setDirection(a);

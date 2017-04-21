@@ -17,6 +17,7 @@ public:
 
   int getScore();
   void setScore(int score);
+  void setXY(int x, int y);
 };
 
 #endif

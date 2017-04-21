@@ -35,7 +35,10 @@ public:
   void printScr(Game_Object* gameObject);
   void printTrap(std::vector<Trap> trap);
   void printBonus(std::vector<Bonus> bonus);
+  void printScore(int score);
   void putDelay();
+  bool menu(size_t maxLine, size_t maxColum);
+  void end();
 
 };
 

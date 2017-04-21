@@ -55,7 +55,7 @@ void Draw::printScr()
 }
 
 //Desenha na tela
-//Entrada: o caracter referente ao corpo, e as coordenadas na tela
+//Parametros: o caracter referente ao corpo, e as coordenadas na tela
 void Draw::printScr(char body, int posX, int posY)
 {
   move(posY, posX);
@@ -87,7 +87,7 @@ void Draw::printBonus(std::vector<Bonus> bonus)
 }
 
 //Desenha na tela
-//Entrada: Um ponteiro para o objeto que sera desenhado
+//Parametro: Um ponteiro para o objeto que sera desenhado
 void Draw::printScr(Game_Object* gameObject)
 {
   move(gameObject->getPosY(), gameObject->getPosX());
@@ -99,4 +99,66 @@ void Draw::putDelay()
 {
   unsigned int retTime = time(0) + delay/20;
   while (time(0) < retTime);
+}
+
+//Desenha o score
+//Parametro: Score
+void Draw::printScore(int score)
+{
+  move(21,1);
+  printw("Score: %d", score);
+  refresh();
+}
+
+//Menu para o labirinto
+//Saida: Se vai ou nao iniciar o jogo
+bool Draw::menu(size_t maxLine, size_t maxColum)
+{
+  char board =(char)219;
+  for(size_t i=0; i<maxLine;++i)
+  {
+    move(i,0);
+    addch(board);
+    refresh();
+    move(i, maxColum-1);
+    addch(board);
+    refresh();
+  }
+  for(size_t i=0;i<maxColum;++i)
+  {
+    move(0, i);
+    addch(board);
+    refresh();
+    move(maxLine-1, i);
+    addch(board);
+    refresh();
+  }
+
+  move(1, (maxColum/2)-9);
+  printw("Jogo do labirinto");
+  refresh();
+  move((maxLine/2)-1, (maxColum/2)-6);
+  printw("Iniciar Jogo");
+  move(maxLine/2, (maxColum/2)-2);
+  printw("Sair");
+  bool option = true, finish = true;
+
+  while(finish)
+  {
+    switch (tolower(getch()))
+    {
+      case 'w':
+        option = !option;
+        break;
+      case 's':
+        option = !option;
+        break;
+      case 'd':
+        finish = false;
+        break;
+      case '\n':
+        finish = false;
+    }
+  }
+  return option;
 }

@@ -18,6 +18,7 @@ public:
 
   bool isColision(int x, int y, char direction);
   bool isColision(Game_Object* gameObject, char direction);
-  bool isPColision(Game_Object* player, Game_Object* enemie);
+  bool isPColision(Game_Object* player, Game_Object* objectGame);
+
 };
 #endif
