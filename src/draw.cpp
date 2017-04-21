@@ -63,6 +63,29 @@ void Draw::printScr(char body, int posX, int posY)
   refresh();
 }
 
+//Desenha todas as Traps na tela
+//Parametro: Vector com todas as traps
+void Draw::printTrap(std::vector<Trap> trap)
+{
+  for(size_t i=0;i<trap.size();++i)
+  {
+    move(trap[i].getPosY(), trap[i].getPosX());
+    addch(trap[i].getBody());
+    refresh();
+  }
+}
+
+
+void Draw::printBonus(std::vector<Bonus> bonus)
+{
+  for(size_t i=0;i<bonus.size();++i)
+  {
+    move(bonus[i].getPosY(), bonus[i].getPosX());
+    addch(bonus[i].getBody());
+    refresh();
+  }
+}
+
 //Desenha na tela
 //Entrada: Um ponteiro para o objeto que sera desenhado
 void Draw::printScr(Game_Object* gameObject)

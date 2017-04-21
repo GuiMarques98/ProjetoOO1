@@ -16,8 +16,8 @@ void Colisor::setMap(std::vector<std::string> map)
 }
 
 //Verifica se ha colisão
-//Entrada: Coordenadas do objeto, direcao de movimento
-//Saida: ha ou nao colisao
+//Parametro: Coordenadas do objeto, direcao de movimento
+//Retorno: ha ou nao colisao
 bool Colisor::isColision(int x, int y, char direction)
 {
   switch (direction) {
@@ -42,12 +42,12 @@ bool Colisor::isColision(int x, int y, char direction)
 }
 
 //Verifica se ha colisoes
-//Saida: ha ou nao colisao
+//Parametro: Ponteiro que aponta para a classe Game_Object
+//Retorno: ha ou nao colisao
 bool Colisor::isColision(Game_Object* gameObject, char direction)
 {
   switch (direction)
   {
-    //Entrada: Ponteiro que aponta para a classe Game_Object
     case 'u': //up pra cima
       if(gameObject->getPosY()-1 <= 0)
         return true;
@@ -70,11 +70,12 @@ bool Colisor::isColision(Game_Object* gameObject, char direction)
     default:
       return false;
   }
+  return false;
 }
 
 //Verifica a colisao player e inimigo
-//Entrada: Dois ponteiros da classe Game_Object
-//Saida: Se ha ou nao colisao
+//Parametro: Dois ponteiros da classe Game_Object
+//Retorno: Se ha ou nao colisao
 bool isPColision(Game_Object* player, Game_Object* enemie)
 {
   if(player->getPosY() == enemie->getPosY() and player->getPosX() == enemie->getPosX())

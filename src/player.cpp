@@ -60,6 +60,16 @@ void Player::setDirection(char direction)
 
 }
 
+int Player::getScore()
+{
+  return score;
+}
+
+void Player::setScore(int score)
+{
+  this->score = score;
+}
+
 //Atualiza as cordenadas de acordo com a direcao
 void Player::updateDirection()
 {
@@ -87,6 +97,8 @@ void Player::updateDirection()
 void Player::act(Colisor mapColisor)
 {
   char a = getch();
+  if(a == -1)
+    return;
   setDirection(a);
   if(mapColisor.isColision(this, getDirection()))//Verifica se colidiu com o mapa
     setDirection(0);

@@ -19,6 +19,14 @@ int main()
 	Draw draw(map, 1);
 	Player player(19,18);
 	Colisor colisor(map.getAllMap());
+	std::vector<Trap> trap;
+	std::vector<Bonus> bonus;
+	Trap trap1(2, 2, '#');
+	trap.push_back(trap1);
+	trap1.setXY(9, 9);
+
+	trap.push_back(trap1);
+
 
 	initscr();
 	noecho();
@@ -26,6 +34,8 @@ int main()
 	curs_set(0);
 	draw.printScr();
 	draw.printScr(&player);
+	draw.printTrap(trap);
+
 	while (player.getAlive())
 	{
 		player.act(colisor);
@@ -33,6 +43,8 @@ int main()
 		draw.printScr(&player);
 		draw.putDelay();
 	}
+	nodelay(stdscr, false);
+	echo();
 	getch();
 	endwin();
 	return 0;

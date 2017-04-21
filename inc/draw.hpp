@@ -33,6 +33,8 @@ public:
   void printScr();
   void printScr(char body, int posX, int posY);
   void printScr(Game_Object* gameObject);
+  void printTrap(std::vector<Trap> trap);
+  void printBonus(std::vector<Bonus> bonus);
   void putDelay();
 
 };
