@@ -37,8 +37,9 @@ public:
   void printBonus(std::vector<Bonus> bonus);
   void printScore(int score);
   void putDelay();
+  void putDelay(int seg);
   bool menu(size_t maxLine, size_t maxColum);
-  void end();
+  void end(int maxLine, int maxColum, int score);
 
 };
 

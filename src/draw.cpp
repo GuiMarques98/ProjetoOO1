@@ -101,6 +101,14 @@ void Draw::putDelay()
   while (time(0) < retTime);
 }
 
+//Aplica delay a tela
+void Draw::putDelay(int seg)
+{
+  unsigned int retTime = time(0) + seg;
+  while (time(0) < retTime);
+}
+
+
 //Desenha o score
 //Parametro: Score
 void Draw::printScore(int score)
@@ -111,7 +119,7 @@ void Draw::printScore(int score)
 }
 
 //Menu para o labirinto
-//Saida: Se vai ou nao iniciar o jogo
+//Retorno: Se vai ou nao iniciar o jogo
 bool Draw::menu(size_t maxLine, size_t maxColum)
 {
   char board =(char)219;
@@ -133,18 +141,48 @@ bool Draw::menu(size_t maxLine, size_t maxColum)
     addch(board);
     refresh();
   }
-
   move(1, (maxColum/2)-9);
   printw("Jogo do labirinto");
   refresh();
-  move((maxLine/2)-1, (maxColum/2)-6);
-  printw("Iniciar Jogo");
-  move(maxLine/2, (maxColum/2)-2);
-  printw("Sair");
-  bool option = true, finish = true;
 
+  bool option= true, finish=true, blink = true;
   while(finish)
   {
+      if(option)
+      {
+        if(blink)
+        {
+          attron(A_REVERSE);
+          move((maxLine/2)-1, (maxColum/2)-6);
+          printw("Iniciar Jogo");
+          attroff(A_REVERSE);
+          move(maxLine/2, (maxColum/2)-2);
+          printw("Sair");
+        }
+        else{
+          move((maxLine/2)-1, (maxColum/2)-6);
+          printw("Iniciar Jogo");
+          move(maxLine/2, (maxColum/2)-2);
+          printw("Sair");
+        }
+      }
+      else{
+        if(blink)
+        {
+          move((maxLine/2)-1, (maxColum/2)-6);
+          printw("Iniciar Jogo");
+          move(maxLine/2, (maxColum/2)-2);
+          attron(A_REVERSE);
+          printw("Sair");
+          attroff(A_REVERSE);
+        }
+        else{
+          move((maxLine/2)-1, (maxColum/2)-6);
+          printw("Iniciar Jogo");
+          move(maxLine/2, (maxColum/2)-2);
+          printw("Sair");
+        }
+      }
     switch (tolower(getch()))
     {
       case 'w':
@@ -159,6 +197,46 @@ bool Draw::menu(size_t maxLine, size_t maxColum)
       case '\n':
         finish = false;
     }
+    putDelay();
   }
   return option;
+}
+
+void Draw::end(int maxLine, int maxColum, int score)
+{
+  char board =(char)219;
+  WINDOW* endWin;
+  endWin = newwin(maxLine, maxColum+2, 0,0);
+  wrefresh(endWin);
+  for(int i=0; i<maxLine;++i)
+  {
+    move(i,0);
+    addch(board);
+    refresh();
+    move(i, maxColum-1);
+    addch(board);
+    refresh();
+  }
+  for(int i=0;i<maxColum;++i)
+  {
+    move(0, i);
+    addch(board);
+    refresh();
+    move(maxLine-1, i);
+    addch(board);
+    refresh();
+  }
+  move(1, (maxColum/2)-9);
+  printw("Jogo do labirinto");
+  refresh();
+  move(maxLine/2, (maxColum/2)-5),
+  printw("Score: %d", score);
+  refresh();
+  move(maxLine-2, (maxColum/2)-6);
+  printw("FIM DE JOGO!");
+  refresh();
+  nodelay(endWin, false);
+  getch();
+  delwin(endWin);
+
 }

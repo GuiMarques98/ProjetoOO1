@@ -82,42 +82,62 @@ int main()
 	initscr();
 	noecho();
 	nodelay(stdscr, false);
-	//nodelay(stdscr, true);//getch nao espera o usuário pressionar a tecla
+	nodelay(stdscr, true);//getch nao espera o usuário pressionar a tecla
 	curs_set(0);
-	draw.printScr();
-	draw.printScr(&player);
-	draw.printTrap(trap);
-	draw.printBonus(bonus);
-	while (player.getAlive() and !player.getWin())
-	{
 
-		player.act(colisor);
-		for(size_t i=0; i<trap.size() or i< bonus.size(); ++i)
+	int maxLine=0, maxColum=0;
+	try{
+		maxLine = map.getMaxLine();
+		maxColum = map.getMaxColum();
+	}
+	catch(char *msg)
+	{
+		char a;
+		std::cout << msg << '\n';
+		std::cin >> a;
+		exit(1);
+	}
+	if(draw.menu(maxLine, maxColum))
+	{
+		move(0,0);
+		draw.printScr();
+		draw.printScr(&player);
+		draw.printTrap(trap);
+		draw.printBonus(bonus);
+		while (player.getAlive() and !player.getWin())
 		{
-			if(colisor.isPColision(&player, &bonus[i]) and i< bonus.size())
+
+
+			player.act(colisor);
+
+			for(size_t i=0; i<trap.size() or i< bonus.size(); ++i)
 			{
-				player.setScore(bonus[i].getScore());
-				bonus.erase(bonus.begin()+i);
-			}
-			else
-			{
-				if(colisor.isPColision(&player, &trap[i]) and i<trap.size())
+				if(colisor.isPColision(&player, &bonus[i]) and i< bonus.size())
 				{
-					player.setAlive(false);
-					break;
+					player.setScore(bonus[i].getScore());
+					bonus.erase(bonus.begin()+i);
+				}
+				else
+				{
+					if(colisor.isPColision(&player, &trap[i]) and i<trap.size())
+					{
+						player.setAlive(false);
+						break;
+					}
 				}
 			}
-		}
-		if(player.getPosY() == 18 and player.getPosX()== 65)
-		{
-			player.setWin(true);
-			continue;
-		}
-		draw.printScr(&player);
-		draw.printScore(player.getScore());
+			if(player.getPosY() == 18 and player.getPosX()== 65)
+			{
+				player.setWin(true);
+				continue;
+			}
+			draw.printScr(&player);
+			draw.printScore(player.getScore());
+		}//Fim do laco do jogo
+		nodelay(stdscr, false);
+		draw.end(maxLine, maxColum, player.getScore());
 	}
 	echo();
-	getch();
 	endwin();
 	return 0;
 }
