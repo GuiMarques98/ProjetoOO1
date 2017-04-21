@@ -143,6 +143,18 @@ bool Draw::menu(size_t maxLine, size_t maxColum)
   }
   move(1, (maxColum/2)-9);
   printw("Jogo do labirinto");
+  move(3, (maxColum/2)-5);
+  printw("@: Player");
+  move(4, (maxColum/2)-6);
+  printw("#: Armadilha");
+  move(5, (maxColum/2)-4);
+  printw("$: Bonus");
+  move(6, (maxColum/2)-5);
+  printw("=: Parede");
+  move(7, (maxColum/2)- 16);
+  printw("Movimentacao com as teclas WASD");
+  move(9, (maxColum/2)- 18);
+  printw("Chegue ao '&' para terminar o jogo!");
   refresh();
 
   bool option= true, finish=true, blink = true;
