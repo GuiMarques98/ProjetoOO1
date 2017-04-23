@@ -119,6 +119,7 @@ void Draw::printScore(int score)
 }
 
 //Menu para o labirinto
+//Parametro: Maximo de linhas e colunas da tela
 //Retorno: Se vai ou nao iniciar o jogo
 bool Draw::menu(size_t maxLine, size_t maxColum)
 {
@@ -214,6 +215,8 @@ bool Draw::menu(size_t maxLine, size_t maxColum)
   return option;
 }
 
+//Desenha a tela de final de jogo
+//Parametro: maximo de linhas e maximo de colunas da janela
 void Draw::end(int maxLine, int maxColum, int score)
 {
   char board =(char)219;
